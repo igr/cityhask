@@ -4,8 +4,10 @@ module Domain(
     OutputPath(..),
     unInputPath,
     City(..),
+    Country,
+    parseCountry
 ) where
-        
+
 newtype InputPath = InputPath String deriving (Show, Eq)
 
 unInputPath :: InputPath -> String
@@ -20,5 +22,12 @@ data Configuration = Configuration {
 
 data City = City {
     name :: String,
-    country :: String
+    country :: Country
     } deriving (Show)
+
+data Country = USA | JAPAN deriving (Enum, Show)
+
+parseCountry :: String -> Country
+parseCountry "US" = USA
+parseCountry "JP" = JAPAN
+parseCountry _ = error "Invalid country"

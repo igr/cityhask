@@ -3,7 +3,7 @@ module Parse(
 ) where
 
 import Data.List ( findIndex, isPrefixOf, tails )
-import Domain ( City(City) )
+import Domain ( City(City), parseCountry )
 
 findString :: (Eq a) => [a] -> [a] -> Maybe Int
 findString search str = findIndex (isPrefixOf search) (tails str)
@@ -18,4 +18,4 @@ parse city = do
     let country = case index2 of
                     Just i -> takeWhile (/= '"') (drop (i + 11) city)
                     Nothing -> "n/a"
-    City name country
+    City name (parseCountry country)
