@@ -1,0 +1,8 @@
+{
+    "name": "New York",
+    "country": "US",
+    "coord": {
+      "lon": -74.005966,
+      "lat": 40.714272
+    }    
+}
